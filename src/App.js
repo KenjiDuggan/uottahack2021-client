@@ -15,7 +15,7 @@ function App() {
   const currentNews = useSelector(state => state.posts)
   const newsLoading = useSelector(state => state.loading)
 
-
+  console.log(currentNews);
   const dispatch = useDispatch();
 
   const [left, setLeft] = useState(false);
@@ -57,7 +57,7 @@ function App() {
         <h1>COVID-19 Updates</h1>
         <div>Ontario</div>
         <header className="App-header">
-          {currentNews.map((article, i) => (
+          {currentNews && currentNews.map((article, i) => (
             <NewsCard article={article} key={i} />
           ))}
           <SampleComponent color="blue" />

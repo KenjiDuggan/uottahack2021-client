@@ -11,6 +11,7 @@ const newsLoading = (isLoading = true) => {
 }
 
 const loadNewsSuccess = (posts) => {
+    console.log(posts)
     return {
         type: types.LOAD_NEWS_SUCCESS,
         payload: posts

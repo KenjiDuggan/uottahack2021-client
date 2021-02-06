@@ -4,16 +4,18 @@
 import initialState from '../initialState';
 
 const currentNews = (state = initialState, action) => {
+    console.log(action);
+
     switch(action.type){
         case "NEWS_LOADING":
             return {
                 ...state,
-                loading: action.isLoading
+                loading: action.payload
             }
         case "LOAD_NEWS_SUCCESS":
             return {
                 ...state,
-                posts: action.posts,
+                posts: action.payload,
                 loading: false
             }
         default:
