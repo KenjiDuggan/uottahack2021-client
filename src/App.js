@@ -4,15 +4,20 @@ import SampleComponent from "./SampleComponent";
 import ToolbarComponent from "./components/Toolbar/Toolbar";
 import DrawerComponent from "./components/Drawer/Drawer";
 import Container from '@material-ui/core/Container';
+import { useDispatch, useSelector } from 'react-redux';
+import allActions from './store/actions/index';
+
 import axios from 'axios';
 import { config } from './config';
- 
 import "./App.css";
  
- 
 function App() {
-  const [isLoading, setLoading] = useState(true);
-  const [news, setNews] = useState([]);
+  const currentNews = useSelector(state => state.posts)
+  const newsLoading = useSelector(state => state.loading)
+
+
+  const dispatch = useDispatch();
+
   const [left, setLeft] = useState(false);
  
   function toggleDrawer() {
@@ -20,22 +25,24 @@ function App() {
     //   return;
     // }
  
-    setLeft(false);
+    setLeft(prevLeft => !prevLeft);
   }
  
   function openDrawer() {
-    setLeft(true);
+    setLeft(prevLeft => !prevLeft);
   }
  
   useEffect(() => {
-    axios.get(`http://newsapi.org/v2/everything?q=covid&from=2021-01-06&sortBy=publishedAt&apiKey=${config.key}`).then(response => {
-      setNews(response.data.articles);
-      console.log(response);
-      setLoading(false);
+    dispatch(allActions.newsActions.newsLoading());
+    axios.get(`https://newsapi.org/v2/everything?q=covid+AND+ontario&from=2021-02-05&to=2021-02-06&sortBy=relevancy&apiKey=${config.key}`).then(response => {
+      dispatch(allActions.newsActions.loadNewsSuccess(response.data.articles))
+    }).catch(error => {
+      console.log(error);
+      dispatch(allActions.newsActions.newsLoading(false));
     })
-  })
+  }, [])
 
-  if(isLoading) {
+  if(newsLoading) {
     return <h1>News articles are loading...</h1>
   }
  
@@ -50,18 +57,14 @@ function App() {
         <h1>COVID-19 Updates</h1>
         <div>Ontario</div>
         <header className="App-header">
-          {news.map((article) => (
-            <NewsCard article={article} />
+          {currentNews.map((article, i) => (
+            <NewsCard article={article} key={i} />
           ))}
           <SampleComponent color="blue" />
         </header>
       </Container>
-
-      
-
     </div>
   );
-
 }
 
 export default App;

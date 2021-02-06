@@ -1,3 +1,3 @@
 export const config = {
-    key: "ac6cfffa0d9841a296909775edca661a"
+    key: "fd9b32bfad27402091c288259e63cf95"
 }
