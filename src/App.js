@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import NewsCard from "./components/NewsCard/NewsCard";
-import SampleComponent from "./SampleComponent";
+import { Route, Switch, Redirect } from "react-router-dom";
+import Default from './Default';
 import ToolbarComponent from "./components/Toolbar/Toolbar";
 import DrawerComponent from "./components/Drawer/Drawer";
 import Container from '@material-ui/core/Container';
@@ -15,7 +15,6 @@ function App() {
   const newsLoading = useSelector(state => state.loading)
   const [news, setNews] = useState([]);
 
-  console.log(currentNews);
   const dispatch = useDispatch();
 
   const [left, setLeft] = useState(false);
@@ -55,14 +54,11 @@ function App() {
         toggleDrawerHandler={toggleDrawer}
       />
       <Container maxWidth="lg">
-        <h1>COVID-19 Updates</h1>
-        <div>Ontario</div>
-        <header className="App-header">
-          {news && news.map((article, i) => (
-            <NewsCard article={article} key={i} />
-          ))}
-          <SampleComponent color="blue" />
-        </header>
+        <Switch>
+          <Route path="/feed" exact component={() => <Default news={news} /> } />
+          {/* <Route path="/feed/:id" component={newsPost}/> */}
+          <Route component={() => <Default news={news} /> }  render={() => <Redirect to= "/feed" />} /> //Redirect to Default page for now
+        </Switch>
       </Container>
     </div>
   );
