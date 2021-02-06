@@ -6,6 +6,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+## Express Backend Proxy 
+
+I put proxy to port 5000 for now...
+
 ### `yarn start`
 
 Runs the app in the development mode.\
