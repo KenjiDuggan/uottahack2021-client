@@ -6,7 +6,6 @@ import DrawerComponent from "./components/Drawer/Drawer";
 import Container from '@material-ui/core/Container';
 import { useDispatch, useSelector } from 'react-redux';
 import allActions from './store/actions/index';
-
 import axios from 'axios';
 import { config } from './config';
 import "./App.css";
@@ -14,6 +13,7 @@ import "./App.css";
 function App() {
   const currentNews = useSelector(state => state.posts)
   const newsLoading = useSelector(state => state.loading)
+  const [news, setNews] = useState([]);
 
   console.log(currentNews);
   const dispatch = useDispatch();
@@ -36,6 +36,7 @@ function App() {
     dispatch(allActions.newsActions.newsLoading());
     axios.get(`https://newsapi.org/v2/everything?q=covid+AND+ontario&from=2021-02-05&to=2021-02-06&sortBy=relevancy&apiKey=${config.key}`).then(response => {
       dispatch(allActions.newsActions.loadNewsSuccess(response.data.articles))
+      setNews(response.data.articles);
     }).catch(error => {
       console.log(error);
       dispatch(allActions.newsActions.newsLoading(false));
@@ -57,7 +58,7 @@ function App() {
         <h1>COVID-19 Updates</h1>
         <div>Ontario</div>
         <header className="App-header">
-          {currentNews && currentNews.map((article, i) => (
+          {news && news.map((article, i) => (
             <NewsCard article={article} key={i} />
           ))}
           <SampleComponent color="blue" />
