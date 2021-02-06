@@ -8,7 +8,6 @@ import "./Default.css";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-      
       display: "flex",
       flexWrap: "wrap",
       justifyContent: "space-around",
@@ -17,10 +16,10 @@ const useStyles = makeStyles((theme) => ({
      
     },
     paper: {
-      padding: theme.spacing(3),
+    
       textAlign: 'center',
       color: theme.palette.text.secondary,
-      margin: '10px'
+      margin: '20px'
     },
   }));
  
@@ -35,11 +34,11 @@ const Default = (props) => {
   return (
     <div >
         <h1>COVID-19 Updates</h1>
-        <div>Ontario</div>
-        <Grid spacing={2}  className={classes.root}>
-           
+        <h3>Ontario</h3>
+        <br />
+        <Grid spacing={12}  className={classes.root}>
             { articles.length > 0 && articles.map((article, i) => (
-                <NewsCard key={article} article={article} key={i} />
+                <NewsCard className={classes.paper} key={article} article={article} key={i} />
             ))}
             <SampleComponent color="blue" />
          

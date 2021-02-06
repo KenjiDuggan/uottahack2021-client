@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Default from './Default';
+import {
+  useTheme,
+  createMuiTheme,
+  MuiThemeProvider
+} from "@material-ui/core/styles";
 import ToolbarComponent from "./components/Toolbar/Toolbar";
 import DrawerComponent from "./components/Drawer/Drawer";
 import Container from '@material-ui/core/Container';
@@ -9,6 +14,23 @@ import allActions from './store/actions/index';
 import axios from 'axios';
 import { config } from './config';
 import "./App.css";
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#757ce8',
+      main: '#3f50b5',
+      dark: '#002884',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ff7961',
+      main: '#f44336',
+      dark: '#ba000d',
+      contrastText: '#000',
+    },
+  },
+});
  
 function App() {
   const currentNews = useSelector(state => state.posts)
@@ -48,18 +70,20 @@ function App() {
  
   return (
     <div className="App">
-      <ToolbarComponent openDrawerHandler={openDrawer} />
-      <DrawerComponent
-        left={left}
-        toggleDrawerHandler={toggleDrawer}
-      />
-      <Container maxWidth="lg">
-        <Switch>
-          <Route path="/feed" exact component={() => <Default news={news} /> } />
-          {/* <Route path="/feed/:id" component={newsPost}/> */}
-          <Route component={() => <Default news={news} /> }  render={() => <Redirect to= "/feed" />} /> //Redirect to Default page for now
-        </Switch>
-      </Container>
+      <MuiThemeProvider theme={theme}> 
+        <ToolbarComponent openDrawerHandler={openDrawer} />
+        <DrawerComponent
+          left={left}
+          toggleDrawerHandler={toggleDrawer}
+        />
+        <Container maxWidth="lg">
+          <Switch>
+            <Route path="/feed" exact component={() => <Default news={news} /> } />
+            {/* <Route path="/feed/:id" component={newsPost}/> */}
+            <Route component={() => <Default news={news} /> }  render={() => <Redirect to= "/feed" />} /> //Redirect to Default page for now
+          </Switch>
+        </Container>
+      </MuiThemeProvider>
     </div>
   );
 }
