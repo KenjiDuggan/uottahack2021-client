@@ -1,19 +1,18 @@
 import React from "react";
-import { fade, makeStyles, withStyles } from "@material-ui/core/styles";
+import { fade, withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
 import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import MenuIcon from "@material-ui/icons/Menu";
-import SearchIcon from "@material-ui/icons/Search";
-import AccountCircle from "@material-ui/icons/AccountCircle";
+import AssessmentIcon from '@material-ui/icons/Assessment' 
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
+import { NavLink } from 'react-router-dom';
 
 const styles = theme => ({
   grow: {
@@ -157,14 +156,16 @@ class ToolbarComponent extends React.Component {
           <p>Notifications</p>
         </MenuItem>
         <MenuItem onClick={this.handleProfileMenuOpen}>
-          <IconButton
-            aria-label="account of current user"
-            aria-controls="primary-search-account-menu"
-            aria-haspopup="true"
-            color="inherit"
-          >
-            <AccountCircle />
-          </IconButton>
+          <NavLink to="/ranking">
+            <IconButton
+              aria-label="account of current user"
+              aria-controls="primary-search-account-menu"
+              aria-haspopup="true"
+              color="inherit"
+            >
+              <AssessmentIcon  style={{fill: "white"}}/>
+            </IconButton>
+          </NavLink>
           <p>Profile</p>
         </MenuItem>
       </Menu>
@@ -189,16 +190,18 @@ class ToolbarComponent extends React.Component {
  
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <IconButton
-                edge="end"
-                aria-label="account of current user"
-                aria-controls={menuId}
-                aria-haspopup="true"
-                onClick={this.handleProfileMenuOpen}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
+              <NavLink to="/ranking">
+                <IconButton
+                  edge="end"
+                  aria-label="account of current user"
+                  aria-controls={menuId}
+                  aria-haspopup="true"
+                  onClick={this.handleProfileMenuOpen}
+                  color="inherit"
+                >
+                  <AssessmentIcon style={{fill: "white"}}/>
+                </IconButton>
+              </ NavLink>
             </div>
             <div className={classes.sectionMobile}>
               <IconButton

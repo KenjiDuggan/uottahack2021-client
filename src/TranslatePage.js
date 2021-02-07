@@ -19,38 +19,18 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-  
-
 const TranslatePage = () => {
   const classes = useStyles();
-  const { id } = useParams();
-
-  console.log(id);
-
-  const post = useSelector(state =>
-    state.currentNews.posts.find(obj => {
-        return obj.publishedAt === id
-      })
-  )
-
-  console.log(post);
  
-  if (!post) {
-    return (
-      <section>
-        <h2>Post not found!</h2>
-      </section>
-    )
-  }
-
+  
   return (
     <Container maxWidth="md">
             <Grid  className={classes.root}>
                 <Grid item xs={4} className={classes.column}>
-
+                    <div>poopoo</div>
                 </Grid>
                 <Grid item xs={4} className={classes.column}>
-
+    
                 </Grid>
                 <Grid item xs={4} className={classes.column}>
 

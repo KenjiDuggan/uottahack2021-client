@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Default from './Default';
+import RankingPage from './RankingPage'
 import {
   createMuiTheme,
   MuiThemeProvider
@@ -82,8 +83,9 @@ function App() {
         <Container maxWidth="lg">
             <Switch>
               <Route path="/feed" exact component={() => <Default news={news} /> } />
+              <Route path="/feed/translate/:id" component={() => <TranslatePage />}/>
               <Route path="/feed/:id" component={() => <NewsPage />}/>
-              <Route path="/feed/:id/translate" component={() => <TranslatePage />}/>
+              <Route path="/ranking" exact component={() => <RankingPage /> } />
               <Route component={() => <Default news={news} /> }  render={() => <Redirect to= "/feed" />} /> //Redirect to Default page for now
             </Switch>
         </Container>

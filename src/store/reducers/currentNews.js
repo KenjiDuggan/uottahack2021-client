@@ -4,8 +4,7 @@
 import initialState from '../initialState';
 
 const currentNews = (state = initialState, action) => {
-    console.log(action);
-
+ 
     switch(action.type){
         case "NEWS_LOADING":
             return {

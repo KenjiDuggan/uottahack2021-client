@@ -12,10 +12,8 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: "space-around",
       overflow: "hidden",
       backgroundColor: theme.palette.background.paper,
-     
     },
     paper: {
-    
       textAlign: 'center',
       color: theme.palette.text.secondary,
       margin: '20px'

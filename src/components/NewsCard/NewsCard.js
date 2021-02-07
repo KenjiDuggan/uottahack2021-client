@@ -51,8 +51,7 @@ const WhiteTextTypography = withStyles({
 
 const NewsCard = ({ article }) => {
   const classes = useStyles();
-  console.log(article);
-  
+ 
   const routeChange = () => {
     let path = `/feed/${article.publishedAt}`;
     history.push(path);
@@ -95,7 +94,6 @@ const NewsCard = ({ article }) => {
               </CardContent>
             </CardActionArea>
             <CardActions style={{justifyContent: 'center'}}>
-              {/* <a href="source">source</a> */}
               <Button variant="contained" className={classes.orange} onClick={routeChange} >
                 <WhiteTextTypography variant="h5">Read more...</WhiteTextTypography>
               </Button>

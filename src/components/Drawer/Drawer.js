@@ -1,5 +1,6 @@
 import React from "react";
 import Drawer from "@material-ui/core/Drawer";
+import { NavLink } from 'react-router-dom';
 import withStyles from "@material-ui/core/styles/withStyles";
 import {
   List,
@@ -34,8 +35,10 @@ class DrawerComponent extends React.Component {
         onClick={this.props.toggleDrawerHandler}
         onKeyDown={this.props.toggleDrawerHandler}
       >
-        <List>
+        <NavLink to="/feed" >
+          <List> 
           {["News"].map((text, index) => (
+            
             <ListItem button key={text}>
               <ListItemIcon>
                 <AnnouncementIcon /> 
@@ -44,6 +47,7 @@ class DrawerComponent extends React.Component {
             </ListItem>
           ))}
         </List>
+        </NavLink>
         <Divider />
       </div>
     );
