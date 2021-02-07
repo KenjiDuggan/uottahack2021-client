@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { useHistory } from "react-router-dom";
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -35,7 +36,9 @@ const useStyles = makeStyles((theme) => ({
   content: {
     textAlign: 'left',
   },
- 
+  orange: {
+    backgroundColor: '#F38042',
+  }
 }));
 
 const WhiteTextTypography = withStyles({
@@ -48,10 +51,16 @@ const WhiteTextTypography = withStyles({
 
 const NewsCard = ({ article }) => {
   const classes = useStyles();
+  const history = useHistory();
   console.log(article);
+  
+  const routeChange = () => {
+    let path = `/feed/${article.publishedAt}`;
+    history.push(path);
+  }
+
   const { author, content, description, publishedAt, source, title, url, urlToImage } = article;
   return (
-    
       <Grid item xs={4}>
           <Card className={classes.paper}>
             <CardActionArea>
@@ -88,8 +97,7 @@ const NewsCard = ({ article }) => {
             </CardActionArea>
             <CardActions style={{justifyContent: 'center'}}>
               {/* <a href="source">source</a> */}
-            
-              <Button variant="contained" color="secondary">
+              <Button variant="contained" className={classes.orange} onClick={routeChange} >
                 <WhiteTextTypography variant="h5">Read more...</WhiteTextTypography>
               </Button>
             </CardActions>

@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Default from './Default';
 import {
-  useTheme,
   createMuiTheme,
   MuiThemeProvider
 } from "@material-ui/core/styles";
 import ToolbarComponent from "./components/Toolbar/Toolbar";
+import NewsPage from "./NewsPage";
 import DrawerComponent from "./components/Drawer/Drawer";
 import Container from '@material-ui/core/Container';
 import { useDispatch, useSelector } from 'react-redux';
@@ -79,7 +79,7 @@ function App() {
         <Container maxWidth="lg">
           <Switch>
             <Route path="/feed" exact component={() => <Default news={news} /> } />
-            {/* <Route path="/feed/:id" component={newsPost}/> */}
+            <Route path="/feed/:id" component={() => <NewsPage />}/>
             <Route component={() => <Default news={news} /> }  render={() => <Redirect to= "/feed" />} /> //Redirect to Default page for now
           </Switch>
         </Container>

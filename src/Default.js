@@ -38,10 +38,9 @@ const Default = (props) => {
         <br />
         <Grid spacing={12}  className={classes.root}>
             { articles.length > 0 && articles.map((article, i) => (
-                <NewsCard className={classes.paper} key={article} article={article} key={i} />
+                <NewsCard className={classes.paper} key={article} article={article} key={article.publishedAt} />
             ))}
-            <SampleComponent color="blue" />
-         
+ 
         </Grid>
     </div>
   );

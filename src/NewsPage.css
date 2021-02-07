@@ -1,0 +1,100 @@
+ 
+.bigButton {
+  display: block;
+  width: 200px;
+  height: 170px;
+  margin: 50px auto;
+  background: #F38042;
+  padding: 35px;
+  border-radius: 5px;
+  position: relative;
+  box-shadow: inset 0 0 5px rgba(252,221,127,0.8);
+  border: 1px solid #F38042;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.5s linear, transform 0.2s linear;
+}
+.bigButton .iccoo {
+  position: absolute;
+  font-size: 80px;
+  left: 15%;
+  top: 17%;
+  color: #fff;
+}
+.bigButton .cont {
+  color: #222;
+  margin-top: 80px;
+  text-align: center;
+}
+.bigButton .cont h4 {
+  position: absolute;
+  left: 15%;
+  font-family: 'Cantora One',serif;
+  font-size: 36px;
+  padding: 14px 2px;
+}
+.bigButton .cont p {
+  position: absolute;
+  top: 72%;
+  left: 16%;
+  font-family: 'Puritan';
+  padding: 2px;
+  color: #fff;
+}
+.bigButton:hover {
+  background: #ddd;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.8);
+  transform: rotate(-2deg);
+}
+.bigButton:hover .iccoo {
+  color: #F38042;
+  animation: hoveringicon 0.5s ease;
+}
+.bigButton:hover .cont h4 {
+  transform: rotate(6deg);
+  animation: fallhead 0.1s ease;
+}
+.bigButton:hover .cont p {
+  transform: rotate(-2deg);
+  color: #F38042;
+  animation: fallpara 0.3s ease;
+}
+
+@keyframes hoveringicon {
+  0% {transform: scale(1,1); color: rgba(255,255,255,1)}
+ 60% {transform: scale(5,5); color: rgba(253,128,61,0)}
+ 61% {transform: scale(0,0); color: rgba(253,128,61,0)}
+100% {transform: scale(1,1); color: rgba(253,128,68,1)}
+}
+@keyframes fallhead {
+  0% {top: -50%;}
+ 100% {top: 50%;}
+}
+@keyframes fallpara {
+  0% {opacity: 0; top: 90%;}
+100% {opacity: 1; top: 72%; color: #F38042;}
+}
+
+/* Credits ========== */
+div.credit { 
+  text-align: center;
+}
+div.credit a {
+  font-family: 'Puritan';
+  text-decoration: none;
+  color: #aaa;
+}
+div.credit a:hover {
+  color: #444;
+}
+
+.globeImage {
+    height: 200px;
+    width: auto;
+}
+
+.bigButtonText {
+    margin-top: -16%;
+    color: white;
+    font-weight: 400;
+}
