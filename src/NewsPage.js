@@ -35,7 +35,7 @@ const NewsPage = () => {
             <Grid item xs={6}>
                  <div className="qrcode">
                     <h1 className="bigButtonText">Speak To Me</h1>
-                    <img src={process.env.PUBLIC_URL + '/images/qr_example.jpg'} className="qrcodeImage" />
+                    <img src={process.env.PUBLIC_URL + '/images/qr_example.png'} className="qrcodeImage" />
                  </div> 
             </Grid>
             <Grid item xs={6}>
