@@ -42,7 +42,7 @@
   color: #fff;
 }
 .bigButton:hover {
-  background: #ddd;
+  background: #3f50b5;
   box-shadow: inset 0 0 5px rgba(0,0,0,0.8);
   transform: rotate(-2deg);
 }
@@ -98,3 +98,48 @@ div.credit a:hover {
     color: white;
     font-weight: 400;
 }
+
+.qrcode {
+    display: block;
+    width: 200px;
+    height: 170px;
+    margin: 50px auto;
+    padding: 35px;
+    border-radius: 5px;
+    position: relative;
+    box-shadow: inset 0 0 5px rgb(252 221 127 / 80%);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.5s linear, transform 0.2s linear;
+    background-color: #3f50b5;
+}
+
+.qrcodeImage {
+    height: 160px;
+    width: auto;
+    margin-top: -10px;
+}
+ 
+  .qrcode:hover {
+    background: #F38042;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.8);
+    transform: rotate(-2deg);
+  }
+  .qrcode:hover .iccoo {
+    color: #3f50b5;
+    animation: hoveringicon 0.5s ease;
+  }
+  .qrcode:hover   h4 {
+    transform: rotate(6deg);
+    animation: fallhead 0.1s ease;
+  }
+  .qrcode:hover  p {
+    transform: rotate(-2deg);
+    color: #3f50b5;
+    animation: fallpara 0.3s ease;
+  }
+  
+  .postImage {
+      max-width: 100%;
+      height: auto;
+  }
