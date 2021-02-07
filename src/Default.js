@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import NewsCard from "./components/NewsCard/NewsCard";
-import SampleComponent from "./SampleComponent";
 import Grid from '@material-ui/core/Grid';
 import "./Default.css";
 
@@ -36,11 +35,10 @@ const Default = (props) => {
         <h1>COVID-19 Updates</h1>
         <h3>Ontario</h3>
         <br />
-        <Grid spacing={12}  className={classes.root}>
+        <Grid className={classes.root}>
             { articles.length > 0 && articles.map((article, i) => (
                 <NewsCard className={classes.paper} key={article} article={article} key={article.publishedAt} />
             ))}
- 
         </Grid>
     </div>
   );

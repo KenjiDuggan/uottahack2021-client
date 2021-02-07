@@ -5,15 +5,19 @@ import {
   createMuiTheme,
   MuiThemeProvider
 } from "@material-ui/core/styles";
+import { createBrowserHistory } from 'history';
 import ToolbarComponent from "./components/Toolbar/Toolbar";
 import NewsPage from "./NewsPage";
 import DrawerComponent from "./components/Drawer/Drawer";
+import TranslatePage from "./TranslatePage";
 import Container from '@material-ui/core/Container';
 import { useDispatch, useSelector } from 'react-redux';
 import allActions from './store/actions/index';
 import axios from 'axios';
 import { config } from './config';
 import "./App.css";
+
+export const history = createBrowserHistory();
 
 const theme = createMuiTheme({
   palette: {
@@ -33,7 +37,6 @@ const theme = createMuiTheme({
 });
  
 function App() {
-  const currentNews = useSelector(state => state.posts)
   const newsLoading = useSelector(state => state.loading)
   const [news, setNews] = useState([]);
 
@@ -62,7 +65,7 @@ function App() {
       console.log(error);
       dispatch(allActions.newsActions.newsLoading(false));
     })
-  }, [])
+  }, [dispatch])
 
   if(newsLoading) {
     return <h1>News articles are loading...</h1>
@@ -77,11 +80,12 @@ function App() {
           toggleDrawerHandler={toggleDrawer}
         />
         <Container maxWidth="lg">
-          <Switch>
-            <Route path="/feed" exact component={() => <Default news={news} /> } />
-            <Route path="/feed/:id" component={() => <NewsPage />}/>
-            <Route component={() => <Default news={news} /> }  render={() => <Redirect to= "/feed" />} /> //Redirect to Default page for now
-          </Switch>
+            <Switch>
+              <Route path="/feed" exact component={() => <Default news={news} /> } />
+              <Route path="/feed/:id" component={() => <NewsPage />}/>
+              <Route path="/feed/:id/translate" component={() => <TranslatePage />}/>
+              <Route component={() => <Default news={news} /> }  render={() => <Redirect to= "/feed" />} /> //Redirect to Default page for now
+            </Switch>
         </Container>
       </MuiThemeProvider>
     </div>

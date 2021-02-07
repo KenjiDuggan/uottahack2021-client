@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import { useHistory } from "react-router-dom";
+import history from '../../history'
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -51,14 +51,13 @@ const WhiteTextTypography = withStyles({
 
 const NewsCard = ({ article }) => {
   const classes = useStyles();
-  const history = useHistory();
   console.log(article);
   
   const routeChange = () => {
     let path = `/feed/${article.publishedAt}`;
     history.push(path);
   }
-
+ 
   const { author, content, description, publishedAt, source, title, url, urlToImage } = article;
   return (
       <Grid item xs={4}>
