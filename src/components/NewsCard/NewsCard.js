@@ -62,7 +62,7 @@ const NewsCard = ({ article }) => {
   return (
       <Grid item xs={4}>
           <Card className={classes.paper}>
-            <CardActionArea>
+            <CardActionArea onClick={routeChange} >
               <CardMedia
                 component="img"
                 alt="Contemplative Reptile"

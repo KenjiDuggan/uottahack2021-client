@@ -184,7 +184,7 @@ class ToolbarComponent extends React.Component {
               <MenuIcon />
             </IconButton>
             <Typography className={classes.title} variant="h6" noWrap>
-              Komunity
+              CCN
             </Typography>
  
             <div className={classes.grow} />
