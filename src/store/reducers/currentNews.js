@@ -17,6 +17,11 @@ const currentNews = (state = initialState, action) => {
                 posts: action.payload,
                 loading: false
             }
+        case "CURRENT_NEWS":
+            return {
+                ...state,
+                post: action.payload,
+            }
         default:
             return state
     }

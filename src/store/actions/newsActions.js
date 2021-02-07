@@ -17,7 +17,16 @@ const loadNewsSuccess = (posts) => {
     }
 }
 
+const selectNews = (post) => {
+    return {
+        type: types.CURRENT_NEWS,
+        payload: post
+    }
+}
+
+
 export default {
     newsLoading,
-    loadNewsSuccess
+    loadNewsSuccess,
+    selectNews
 }

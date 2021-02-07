@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import history from '../../history'
 import Grid from '@material-ui/core/Grid';
@@ -9,8 +9,10 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { useDispatch, } from 'react-redux';
 import Fab from '@material-ui/core/Fab';
 import NavigationIcon from '@material-ui/icons/Navigation';
+import allActions from '../../store/actions/index';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 
 const useStyles = makeStyles((theme) => ({
@@ -51,11 +53,17 @@ const WhiteTextTypography = withStyles({
 
 const NewsCard = ({ article }) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
  
   const routeChange = () => {
+    dispatch(allActions.newsActions.selectNews(article))
     let path = `/feed/${article.publishedAt}`;
     history.push(path);
   }
+  console.log(article)
+//   useEffect(() => {
+//     dispatch(allActions.newsActions.selectNews(article))
+//  }, []);
  
   const { author, content, description, publishedAt, source, title, url, urlToImage } = article;
   return (

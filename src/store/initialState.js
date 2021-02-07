@@ -1,6 +1,7 @@
 export default {
     news: {
       loading: false,
-      posts: []
+      posts: [],
+      post: {}
     }
   }

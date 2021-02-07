@@ -34,7 +34,7 @@ const Default = (props) => {
         <h3>Ontario</h3>
         <br />
         <Grid className={classes.root}>
-            { articles.length > 0 && articles.map((article, i) => (
+            {articles.length > 0 && articles.map((article, i) => (
                 <NewsCard className={classes.paper} key={article} article={article} key={article.publishedAt} />
             ))}
         </Grid>
